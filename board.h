@@ -3,7 +3,6 @@
 
 #include <stdint.h>
 
-typedef uint64_t board_type;
 
 #define EMPTY       0
 #define W_QUEEN     1
@@ -14,10 +13,11 @@ typedef uint64_t board_type;
 #define B_ROOK      6
 #define B_BISHOP    7
 #define B_KNIGHT    8LL
-#define MASK       15ULL 
 
 typedef enum {white = 0, black = 1} color;
 
+extern void *getEmptyBoard(void);
+extern void printBoard(void *board);
 extern int getPiece(void *board, int row, int col);
 extern void setPiece(void *board, int row, int col, int piece);
 
