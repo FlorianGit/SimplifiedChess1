@@ -28,5 +28,6 @@ extern int getPiece(void *board, int row, int col);
 extern void setPiece(void *board, int row, int col, int piece);
 
 extern vector<void *> generateKnightMoves(void *board, int row, int col);
+extern vector<void *> generateRookMoves(void *board, int row, int col);
 
 #endif
