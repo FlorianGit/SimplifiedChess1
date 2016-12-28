@@ -66,12 +66,10 @@ int main()
          row = 4 - row;
          setPiece(board, row, col, piece);
       }
-      vector<void *> boards = generateKnightMoves(board, 2, 1);
-      for (vector<void *>::iterator it = boards.begin(); it != boards.end(); ++it)
-      {
-         printBoard(*it);
-         cout << "\n";
-      }
+      if (recursiveSearchWhite(board, nof_moves) == WHITE_WINS)
+         cout << "YES\n";
+      else
+         cout << "NO\n";
    }
    return 0;
 }
