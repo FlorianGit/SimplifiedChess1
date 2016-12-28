@@ -21,6 +21,7 @@ typedef enum {white = 0, black = 1} color;
 
 extern void *getEmptyBoard(void);
 extern char pieceToChar(int piece);
+extern color getColor(int piece);
 extern void printBoard(void *board);
 extern void *copyBoard(void *board);
 extern int getPiece(void *board, int row, int col);

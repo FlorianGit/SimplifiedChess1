@@ -45,6 +45,16 @@ extern char pieceToChar(int piece)
       return '.';
 }
 
+extern color getColor(int piece)
+{
+   if (piece == B_QUEEN || piece == B_KNIGHT
+    || piece == B_ROOK || piece == B_ROOK
+     )
+      return black;
+   else
+      return white;
+}
+
 extern void *copyBoard(void *board)
 {
    board_type *tmp = new uint64_t;
