@@ -266,3 +266,114 @@ extern vector <void *> generateBishopMoves(void *board, int row, int col)
    return ret;
 }
 
+extern vector <void *> generateQueenMoves(void *board, int row, int col)
+{
+   vector <void *> ret;
+   color player;
+   if (getPiece(board, row, col) == W_QUEEN)
+      player = white;
+   else if (getPiece(board, row, col) == B_QUEEN)
+      player = black;
+   else
+      return ret;
+
+   board_type *tmp;
+   tmp = (board_type *)copyBoard(board);
+   setPiece((void*)tmp, row, col, EMPTY);
+   vector<coor> coors;
+   
+   int tmp_row = row, tmp_col = col;
+   int tmp_piece;
+   do 
+   {
+      tmp_row -= 1;
+      tmp_piece = getPiece(board, tmp_row, tmp_col);
+      if (tmp_piece == EMPTY || getColor(tmp_piece) != player)
+         coors.push_back({tmp_row, tmp_col});
+   } while (tmp_row >0 && tmp_piece == EMPTY);
+
+   tmp_row = row, tmp_col = col;
+   do 
+   {
+      tmp_row += 1;
+      tmp_piece = getPiece(board, tmp_row, tmp_col);
+      if (tmp_piece == EMPTY || getColor(tmp_piece) != player)
+         coors.push_back({tmp_row, tmp_col});
+   } while (tmp_row < 3 && tmp_piece == EMPTY);
+
+   tmp_row = row, tmp_col = col;
+   do 
+   {
+      tmp_col -= 1;
+      tmp_piece = getPiece(board, tmp_row, tmp_col);
+      if (tmp_piece == EMPTY || getColor(tmp_piece) != player)
+         coors.push_back({tmp_row, tmp_col});
+   } while(tmp_col >0 && tmp_piece == EMPTY);
+
+   tmp_row = row, tmp_col = col;
+   do 
+   {
+      tmp_col += 1;
+      tmp_piece = getPiece(board, tmp_row, tmp_col);
+      if (tmp_piece == EMPTY || getColor(tmp_piece) != player)
+         coors.push_back({tmp_row, tmp_col});
+   }while (tmp_col < 3 && tmp_piece == EMPTY);
+
+   tmp_row = row, tmp_col = col;
+   do 
+   {
+      tmp_row -= 1;
+      tmp_col -= 1;
+      tmp_piece = getPiece(board, tmp_row, tmp_col);
+      if (tmp_piece == EMPTY || getColor(tmp_piece) != player)
+         coors.push_back({tmp_row, tmp_col});
+   } while (tmp_row >0 && tmp_col > 0 && tmp_piece == EMPTY);
+
+   tmp_row = row, tmp_col = col;
+   do 
+   {
+      tmp_row += 1;
+      tmp_col += 1;
+      tmp_piece = getPiece(board, tmp_row, tmp_col);
+      if (tmp_piece == EMPTY || getColor(tmp_piece) != player)
+         coors.push_back({tmp_row, tmp_col});
+   } while (tmp_row < 3 && tmp_col < 3 && tmp_piece == EMPTY);
+
+   tmp_row = row, tmp_col = col;
+   do 
+   {
+      tmp_row += 1;
+      tmp_col -= 1;
+      tmp_piece = getPiece(board, tmp_row, tmp_col);
+      if (tmp_piece == EMPTY || getColor(tmp_piece) != player)
+         coors.push_back({tmp_row, tmp_col});
+   } while(tmp_col >0 && tmp_row < 3 && tmp_piece == EMPTY);
+
+   tmp_row = row, tmp_col = col;
+   do 
+   {
+      tmp_row -= 1;
+      tmp_col += 1;
+      tmp_piece = getPiece(board, tmp_row, tmp_col);
+      if (tmp_piece == EMPTY || getColor(tmp_piece) != player)
+         coors.push_back({tmp_row, tmp_col});
+   }while (tmp_col < 3 && tmp_row > 0 && tmp_piece == EMPTY);
+
+   for (vector <coor>::iterator it = coors.begin(); it != coors.end(); ++it)
+   {
+      if ( it->row < 0
+        || it->row > 3
+        || it->col < 0
+        || it->col >3
+         )
+         continue;
+
+      board_type *new_tmp = (board_type *)copyBoard(tmp);
+      if (player == white)
+         setPiece(new_tmp, it->row, it->col, W_QUEEN);
+      else
+         setPiece(new_tmp, it->row, it->col, B_QUEEN);
+      ret.push_back(new_tmp);
+   }
+   return ret;
+}
