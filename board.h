@@ -33,4 +33,5 @@ extern vector<void *> generateRookMoves(void *board, int row, int col);
 extern vector <void *> generateBishopMoves(void *board, int row, int col);
 extern vector <void *> generateQueenMoves(void *board, int row, int col);
 
+extern int playerHasWon(void * board, color player);
 #endif

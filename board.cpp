@@ -116,9 +116,29 @@ extern vector <void*> generateAllMoves(void * board)
    return ret;
 }
 
+extern int playerHasWon(void * board, color player)
+{
+   int ret = 1;
+   int search_piece;
 
+   if (player == black)
+      search_piece = W_QUEEN;
+   else
+      search_piece = B_QUEEN;
 
-         
+   for (int row = 0; row < 4; row++)
+   {
+      for (int col = 0; col < 4; col ++)
+      {
+         if (getPiece(board, row, col) == search_piece)
+         {
+            ret = 0;
+            break;
+         }
+      }
+   }
+   return ret;
+}
          
 
 extern vector<void *> generateKnightMoves(void *board, int row, int col)
