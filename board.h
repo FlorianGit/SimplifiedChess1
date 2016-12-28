@@ -27,6 +27,7 @@ extern void *copyBoard(void *board);
 extern int getPiece(void *board, int row, int col);
 extern void setPiece(void *board, int row, int col, int piece);
 
+extern vector <void*> generateAllMoves(void * board);
 extern vector<void *> generateKnightMoves(void *board, int row, int col);
 extern vector<void *> generateRookMoves(void *board, int row, int col);
 extern vector <void *> generateBishopMoves(void *board, int row, int col);

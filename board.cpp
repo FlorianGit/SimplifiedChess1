@@ -75,6 +75,52 @@ extern void setPiece(void *board, int row, int col, int piece)
    *brd |= (uint64_t)piece << (4 * (row * 4 + col));
 }
 
+extern vector <void*> generateAllMoves(void * board)
+{
+   vector <void*> ret;
+   int piece;
+
+   for (int row = 0; row < 4; row++)
+   {
+      for (int col = 0; col < 4; col++)
+      {
+         piece = getPiece(board, row, col);
+         if (piece == EMPTY)
+            continue;
+         vector <void*> tmp_ret;
+
+         switch (piece) {
+            case B_ROOK:
+            case W_ROOK:
+               tmp_ret = generateRookMoves(board, row, col);
+               break;
+
+            case B_KNIGHT:
+            case W_KNIGHT:
+               tmp_ret = generateKnightMoves(board, row, col);
+               break;
+
+            case B_BISHOP:
+            case W_BISHOP:
+               tmp_ret = generateBishopMoves(board, row, col);
+               break;
+
+            case B_QUEEN:
+            case W_QUEEN:
+               tmp_ret = generateQueenMoves(board, row, col);
+               break;
+         }
+         ret.insert(ret.end(), tmp_ret.begin(), tmp_ret.end());
+      }
+   }
+   return ret;
+}
+
+
+
+         
+         
+
 extern vector<void *> generateKnightMoves(void *board, int row, int col)
 {
    vector <void *> ret ;
