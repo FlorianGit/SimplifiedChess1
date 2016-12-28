@@ -19,7 +19,7 @@ extern void *getEmptyBoard(void)
    return new uint64_t;
 }
 
-extern void printBoard(void *board)
+extern void printBoard(const void *board)
 {
    for (int row = 0; row < 4; row++)
    {
@@ -55,14 +55,14 @@ extern color getColor(int piece)
       return white;
 }
 
-extern void *copyBoard(void *board)
+extern void *copyBoard(const void *board)
 {
    board_type *tmp = new uint64_t;
    *tmp = *(board_type *)board;
    return tmp;
 }
 
-extern int getPiece(void *board, int row, int col)
+extern int getPiece( const void *board, int row, int col)
 {
    board_type *brd = (board_type*)board;
    return (*brd >> (4 * (row * 4 + col))) & MASK;
@@ -75,7 +75,7 @@ extern void setPiece(void *board, int row, int col, int piece)
    *brd |= (uint64_t)piece << (4 * (row * 4 + col));
 }
 
-extern vector <void*> generateAllMoves(void * board, color player_to_move)
+extern vector <void*> generateAllMoves(const void * board, color player_to_move)
 {
    vector <void*> ret;
    int piece;
@@ -170,7 +170,7 @@ extern int playerHasWon(void * board, color player)
 }
          
 
-extern vector<void *> generateKnightMoves(void *board, int row, int col)
+extern vector<void *> generateKnightMoves(const void *board, int row, int col)
 {
    vector <void *> ret ;
    color player;
@@ -215,7 +215,7 @@ extern vector<void *> generateKnightMoves(void *board, int row, int col)
    return ret;
 }
 
-extern vector<void *> generateRookMoves(void *board, int row, int col)
+extern vector<void *> generateRookMoves(const void *board, int row, int col)
 {
    vector <void *> ret;
    color player;
@@ -286,7 +286,7 @@ extern vector<void *> generateRookMoves(void *board, int row, int col)
    return ret;
 }
 
-extern vector <void *> generateBishopMoves(void *board, int row, int col)
+extern vector <void *> generateBishopMoves(const void *board, int row, int col)
 {
    vector <void *> ret;
    color player;
@@ -361,7 +361,7 @@ extern vector <void *> generateBishopMoves(void *board, int row, int col)
    return ret;
 }
 
-extern vector <void *> generateQueenMoves(void *board, int row, int col)
+extern vector <void *> generateQueenMoves(const void *board, int row, int col)
 {
    vector <void *> ret;
    color player;

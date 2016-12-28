@@ -22,16 +22,16 @@ typedef enum {white = 0, black = 1} color;
 extern void *getEmptyBoard(void);
 extern char pieceToChar(int piece);
 extern color getColor(int piece);
-extern void printBoard(void *board);
-extern void *copyBoard(void *board);
-extern int getPiece(void *board, int row, int col);
+extern void printBoard(const void *board);
+extern void *copyBoard(const void *board);
+extern int getPiece(const void *board, int row, int col);
 extern void setPiece(void *board, int row, int col, int piece);
 
-extern vector <void*> generateAllMoves(void * board, color player_to_move);
-extern vector<void *> generateKnightMoves(void *board, int row, int col);
-extern vector<void *> generateRookMoves(void *board, int row, int col);
-extern vector <void *> generateBishopMoves(void *board, int row, int col);
-extern vector <void *> generateQueenMoves(void *board, int row, int col);
+extern vector <void*> generateAllMoves(const void * board, color player_to_move);
+extern vector<void *> generateKnightMoves(const void *board, int row, int col);
+extern vector<void *> generateRookMoves(const void *board, int row, int col);
+extern vector <void *> generateBishopMoves(const void *board, int row, int col);
+extern vector <void *> generateQueenMoves(const void *board, int row, int col);
 
 extern int playerHasWon(void * board, color player);
 #endif
