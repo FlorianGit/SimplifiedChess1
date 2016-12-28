@@ -21,7 +21,28 @@ extern void *getEmptyBoard(void)
 
 extern void printBoard(void *board)
 {
-   cout << *(board_type*)board << "\n";
+   for (int row = 0; row < 4; row++)
+   {
+      for (int col = 0; col < 4; col++)
+      {
+         cout << pieceToChar(getPiece(board, row, col));
+      }
+      cout << "\n";
+   }
+}
+
+extern char pieceToChar(int piece)
+{
+   if ( piece == B_QUEEN || piece == W_QUEEN )
+      return 'Q';
+   if (piece == B_KNIGHT || piece == W_KNIGHT)
+      return 'N';
+   if (piece == B_BISHOP || piece == W_BISHOP)
+      return 'B';
+   if (piece == W_ROOK || piece == B_ROOK)
+      return 'R';
+   else
+      return '.';
 }
 
 extern void *copyBoard(void *board)

@@ -68,7 +68,10 @@ int main()
       }
       vector<void *> boards = generateKnightMoves(board, 2, 1);
       for (vector<void *>::iterator it = boards.begin(); it != boards.end(); ++it)
+      {
          printBoard(*it);
+         cout << "\n";
+      }
    }
    return 0;
 }
