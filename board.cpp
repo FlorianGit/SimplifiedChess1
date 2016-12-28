@@ -85,10 +85,10 @@ extern vector<void *> generateKnightMoves(void *board, int row, int col)
    coors.push_back({row - 2, col + 1});
    coors.push_back({row + 2, col - 1});
    coors.push_back({row + 2, col + 1});
-   coors.push_back({row - 1, col - 1});
-   coors.push_back({row - 1, col + 1});
-   coors.push_back({row + 1, col - 1});
-   coors.push_back({row + 1, col + 1});
+   coors.push_back({row - 1, col - 2});
+   coors.push_back({row - 1, col + 2});
+   coors.push_back({row + 1, col - 2});
+   coors.push_back({row + 1, col + 2});
    for (vector <coor>::iterator it = coors.begin(); it != coors.end(); ++it)
    {
       if ( it->row < 0
