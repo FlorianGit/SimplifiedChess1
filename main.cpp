@@ -66,7 +66,9 @@ int main()
          row = 4 - row;
          setPiece(board, row, col, piece);
       }
-      printBoard(board);
+      vector<void *> boards = generateKnightMoves(board, 2, 1);
+      for (vector<void *>::iterator it = boards.begin(); it != boards.end(); ++it)
+         printBoard(*it);
    }
    return 0;
 }
