@@ -90,7 +90,6 @@ extern vector<void *> generateKnightMoves(void *board, int row, int col)
    tmp = (board_type *)copyBoard(board);
    setPiece((void *)tmp, row, col, EMPTY);
    vector <coor> coors;
-   coors.push_back({row,col});
    coors.push_back({row - 2, col - 1});
    coors.push_back({row - 2, col + 1});
    coors.push_back({row + 2, col - 1});
