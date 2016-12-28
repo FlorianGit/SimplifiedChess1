@@ -15,6 +15,9 @@
 #define B_BISHOP    7
 #define B_KNIGHT    8LL
 
+#define WHITE_WINS  0
+#define BLACK_WINS  1
+
 using namespace std;
 
 typedef enum {white = 0, black = 1} color;
@@ -34,4 +37,6 @@ extern vector <void *> generateBishopMoves(const void *board, int row, int col);
 extern vector <void *> generateQueenMoves(const void *board, int row, int col);
 
 extern int playerHasWon(void * board, color player);
+extern int recursiveSearchWhite(const void *board, int level);
+extern int recursiveSearchBlack(const void *board, int level);
 #endif

@@ -472,3 +472,44 @@ extern vector <void *> generateQueenMoves(const void *board, int row, int col)
    }
    return ret;
 }
+
+extern int recursiveSearchWhite(const void *board, int level)
+{
+   if (level == 0)
+   {
+      return BLACK_WINS;
+   }
+
+   vector <void*> moves = generateAllMoves(board, white);
+   for (vector<void*>::iterator it = moves.begin(); it != moves.end(); ++it)
+   {
+      if (playerHasWon(*it, white) == 1)
+         return WHITE_WINS;
+   }
+
+   for (vector<void*>::iterator it = moves.begin(); it != moves.end(); ++it)
+   {
+      if (recursiveSearchBlack(*it, level -1) == WHITE_WINS)
+         return WHITE_WINS;
+   }
+   return BLACK_WINS;
+}
+
+extern int recursiveSearchBlack(const void *board, int level)
+{
+   if (level == 0)
+      return BLACK_WINS;
+
+   vector <void*> moves = generateAllMoves(board, black);
+   for (vector<void*>::iterator it = moves.begin(); it != moves.end(); ++it)
+   {
+      if (playerHasWon(*it, black) == 1)
+         return BLACK_WINS;
+   }
+   for (vector<void*>::iterator it = moves.begin(); it != moves.end(); ++it)
+   {
+      if (recursiveSearchWhite(*it, level -1) == BLACK_WINS)
+         return BLACK_WINS;
+   }
+   return WHITE_WINS;
+}
