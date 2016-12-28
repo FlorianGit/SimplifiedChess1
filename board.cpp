@@ -104,6 +104,9 @@ extern vector<void *> generateKnightMoves(void *board, int row, int col)
         || it->row > 3
         || it->col < 0
         || it->col >3
+        || ( getPiece(tmp, it->row, it->col) != EMPTY
+          && getColor(getPiece(tmp, it->row, it->col)) == player
+           )
          )
          continue;
 
