@@ -54,7 +54,7 @@ extern char pieceToChar(int piece)
 extern color getColor(int piece)
 {
    if (piece == B_QUEEN || piece == B_KNIGHT
-    || piece == B_ROOK || piece == B_ROOK
+    || piece == B_ROOK || piece == B_BISHOP
      )
       return black;
    else
