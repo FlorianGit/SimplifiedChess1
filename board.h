@@ -23,6 +23,7 @@ using namespace std;
 typedef enum {white = 0, black = 1} color;
 
 extern void *getEmptyBoard(void);
+extern void resetBoard(void *board);
 extern char pieceToChar(int piece);
 extern color getColor(int piece);
 extern void printBoard(const void *board);

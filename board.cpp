@@ -19,6 +19,11 @@ extern void *getEmptyBoard(void)
    return new uint64_t;
 }
 
+extern void resetBoard(void *board)
+{
+   *(board_type*)board = 0;
+}
+
 extern void printBoard(const void *board)
 {
    for (int row = 0; row < 4; row++)

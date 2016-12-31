@@ -8,9 +8,10 @@ int main()
 {
    int nof_games, nof_w_pieces, nof_b_pieces, nof_moves;
    cin >> nof_games;
+   void *board = getEmptyBoard();
    for (int game_index = 0; game_index < nof_games; game_index++)
    {
-      void *board = getEmptyBoard();
+      resetBoard(board);
       cin >> nof_w_pieces >> nof_b_pieces >> nof_moves;
       for (int index = 0; index < nof_w_pieces; index++)
       {
