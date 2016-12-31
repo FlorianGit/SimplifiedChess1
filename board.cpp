@@ -359,9 +359,9 @@ extern vector <void *> generateBishopMoves(const void *board, int row, int col)
 
       board_type *new_tmp = (board_type *)copyBoard(tmp);
       if (player == white)
-         setPiece(new_tmp, it->row, it->col, W_ROOK);
+         setPiece(new_tmp, it->row, it->col, W_BISHOP);
       else
-         setPiece(new_tmp, it->row, it->col, B_ROOK);
+         setPiece(new_tmp, it->row, it->col, B_BISHOP);
       ret.push_back(new_tmp);
    }
    return ret;
