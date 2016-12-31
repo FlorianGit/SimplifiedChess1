@@ -572,7 +572,7 @@ extern vector<void *> generateBlackPawnMoves(const void *board, int row, int col
    setPiece((void *)tmp, row, col, EMPTY);
    if (getPiece(tmp, row +1, col) == EMPTY)
    {
-      if (row < 3)
+      if (row < 2)
       {
          board_type *new_tmp = (board_type *)copyBoard(tmp);
          setPiece(new_tmp, row + 1, col, B_PAWN);
@@ -594,7 +594,7 @@ extern vector<void *> generateBlackPawnMoves(const void *board, int row, int col
      && getColor(getPiece(tmp, row+1,col-1)) == white 
       )
    {
-      if (row < 3)
+      if (row < 2)
       {
          board_type *new_tmp = (board_type *)copyBoard(tmp);
          setPiece(new_tmp, row + 1, col - 1, B_PAWN);
@@ -616,7 +616,7 @@ extern vector<void *> generateBlackPawnMoves(const void *board, int row, int col
      && getColor(getPiece(tmp, row+1,col+1)) == white 
       )
    {
-      if (row < 3)
+      if (row < 2)
       {
          board_type *new_tmp = (board_type *)copyBoard(tmp);
          setPiece(new_tmp, row + 1, col + 1, B_PAWN);
