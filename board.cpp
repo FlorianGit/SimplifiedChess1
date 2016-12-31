@@ -508,9 +508,11 @@ extern vector<void *> generateWhitePawnMoves(const void *board, int row, int col
          board_type *new_tmp = (board_type *)copyBoard(tmp);
          setPiece(new_tmp, row - 1, col, W_ROOK);
          ret.push_back(new_tmp);
+         new_tmp = (board_type *)copyBoard(tmp);
 
          setPiece(new_tmp, row - 1, col, W_BISHOP);
          ret.push_back(new_tmp);
+         new_tmp = (board_type *)copyBoard(tmp);
 
          setPiece(new_tmp, row - 1, col, W_KNIGHT);
          ret.push_back(new_tmp);
@@ -530,9 +532,11 @@ extern vector<void *> generateWhitePawnMoves(const void *board, int row, int col
          board_type *new_tmp = (board_type *)copyBoard(tmp);
          setPiece(new_tmp, row - 1, col - 1, W_ROOK);
          ret.push_back(new_tmp);
+         new_tmp = (board_type *)copyBoard(tmp);
 
          setPiece(new_tmp, row - 1, col - 1, W_BISHOP);
          ret.push_back(new_tmp);
+         new_tmp = (board_type *)copyBoard(tmp);
 
          setPiece(new_tmp, row - 1, col - 1, W_KNIGHT);
          ret.push_back(new_tmp);
@@ -552,9 +556,11 @@ extern vector<void *> generateWhitePawnMoves(const void *board, int row, int col
          board_type *new_tmp = (board_type *)copyBoard(tmp);
          setPiece(new_tmp, row - 1, col + 1, W_ROOK);
          ret.push_back(new_tmp);
+         new_tmp = (board_type *)copyBoard(tmp);
 
          setPiece(new_tmp, row - 1, col + 1, W_BISHOP);
          ret.push_back(new_tmp);
+         new_tmp = (board_type *)copyBoard(tmp);
 
          setPiece(new_tmp, row - 1, col + 1, W_KNIGHT);
          ret.push_back(new_tmp);
@@ -582,9 +588,11 @@ extern vector<void *> generateBlackPawnMoves(const void *board, int row, int col
          setPiece(new_tmp, row + 1, col, B_ROOK);
          ret.push_back(new_tmp);
 
+         new_tmp = (board_type *)copyBoard(tmp);
          setPiece(new_tmp, row + 1, col, B_BISHOP);
          ret.push_back(new_tmp);
 
+         new_tmp = (board_type *)copyBoard(tmp);
          setPiece(new_tmp, row + 1, col, B_KNIGHT);
          ret.push_back(new_tmp);
       }
@@ -604,9 +612,11 @@ extern vector<void *> generateBlackPawnMoves(const void *board, int row, int col
          setPiece(new_tmp, row + 1, col - 1, B_ROOK);
          ret.push_back(new_tmp);
 
+         new_tmp = (board_type *)copyBoard(tmp);
          setPiece(new_tmp, row + 1, col - 1, B_BISHOP);
          ret.push_back(new_tmp);
 
+         new_tmp = (board_type *)copyBoard(tmp);
          setPiece(new_tmp, row + 1, col - 1, B_KNIGHT);
          ret.push_back(new_tmp);
       }
@@ -626,9 +636,11 @@ extern vector<void *> generateBlackPawnMoves(const void *board, int row, int col
          setPiece(new_tmp, row + 1, col + 1, B_ROOK);
          ret.push_back(new_tmp);
 
+         new_tmp = (board_type *)copyBoard(tmp);
          setPiece(new_tmp, row + 1, col + 1, B_BISHOP);
          ret.push_back(new_tmp);
 
+         new_tmp = (board_type *)copyBoard(tmp);
          setPiece(new_tmp, row + 1, col + 1, B_KNIGHT);
          ret.push_back(new_tmp);
       }
