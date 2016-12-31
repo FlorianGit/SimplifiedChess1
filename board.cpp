@@ -34,6 +34,7 @@ extern void printBoard(const void *board)
       }
       cout << "\n";
    }
+   cout << "\n";
 }
 
 extern char pieceToChar(int piece)
