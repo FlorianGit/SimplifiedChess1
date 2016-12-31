@@ -47,6 +47,8 @@ extern char pieceToChar(int piece)
       return 'B';
    if (piece == W_ROOK || piece == B_ROOK)
       return 'R';
+   if (piece == B_PAWN || piece == W_PAWN)
+      return 'P';
    else
       return '.';
 }
@@ -55,6 +57,7 @@ extern color getColor(int piece)
 {
    if (piece == B_QUEEN || piece == B_KNIGHT
     || piece == B_ROOK || piece == B_BISHOP
+    || piece == B_PAWN
      )
       return black;
    else
@@ -113,6 +116,10 @@ extern vector <void*> generateAllMoves(const void * board, color player_to_move)
                case W_QUEEN:
                   tmp_ret = generateQueenMoves(board, row, col);
                   break;
+
+               case W_PAWN:
+                  tmp_ret = generateWhitePawnMoves(board, row, col);
+                  break;
             }
             ret.insert(ret.end(), tmp_ret.begin(), tmp_ret.end());
          }
@@ -142,6 +149,10 @@ extern vector <void*> generateAllMoves(const void * board, color player_to_move)
 
                case B_QUEEN:
                   tmp_ret = generateQueenMoves(board, row, col);
+                  break;
+
+               case B_PAWN:
+                  tmp_ret = generateBlackPawnMoves(board, row, col);
                   break;
             }
             ret.insert(ret.end(), tmp_ret.begin(), tmp_ret.end());
@@ -475,6 +486,152 @@ extern vector <void *> generateQueenMoves(const void *board, int row, int col)
       else
          setPiece(new_tmp, it->row, it->col, B_QUEEN);
       ret.push_back(new_tmp);
+   }
+   return ret;
+}
+
+extern vector<void *> generateWhitePawnMoves(const void *board, int row, int col)
+{
+   vector <void *> ret ;
+
+   board_type *tmp;
+   tmp = (board_type *)copyBoard(board);
+   setPiece((void *)tmp, row, col, EMPTY);
+   if (getPiece(tmp, row -1, col) == EMPTY)
+   {
+      if (row > 1)
+      {
+         board_type *new_tmp = (board_type *)copyBoard(tmp);
+         setPiece(new_tmp, row - 1, col, W_PAWN);
+         ret.push_back(new_tmp);
+      } else {
+         board_type *new_tmp = (board_type *)copyBoard(tmp);
+         setPiece(new_tmp, row - 1, col, W_ROOK);
+         ret.push_back(new_tmp);
+
+         setPiece(new_tmp, row - 1, col, W_BISHOP);
+         ret.push_back(new_tmp);
+
+         setPiece(new_tmp, row - 1, col, W_KNIGHT);
+         ret.push_back(new_tmp);
+      }
+   }
+   if ( col > 0 
+     && getPiece(tmp, row - 1, col - 1) != EMPTY
+     && getColor(getPiece(tmp, row-1,col-1)) == black 
+      )
+   {
+      if (row > 1)
+      {
+         board_type *new_tmp = (board_type *)copyBoard(tmp);
+         setPiece(new_tmp, row - 1, col - 1, W_PAWN);
+         ret.push_back(new_tmp);
+      } else {
+         board_type *new_tmp = (board_type *)copyBoard(tmp);
+         setPiece(new_tmp, row - 1, col - 1, W_ROOK);
+         ret.push_back(new_tmp);
+
+         setPiece(new_tmp, row - 1, col - 1, W_BISHOP);
+         ret.push_back(new_tmp);
+
+         setPiece(new_tmp, row - 1, col - 1, W_KNIGHT);
+         ret.push_back(new_tmp);
+      }
+   }
+   if ( col < 3
+     && getPiece(tmp, row - 1, col + 1) != EMPTY
+     && getColor(getPiece(tmp, row-1,col+1)) == black 
+      )
+   {
+      if (row > 1)
+      {
+         board_type *new_tmp = (board_type *)copyBoard(tmp);
+         setPiece(new_tmp, row - 1, col + 1, W_PAWN);
+         ret.push_back(new_tmp);
+      } else {
+         board_type *new_tmp = (board_type *)copyBoard(tmp);
+         setPiece(new_tmp, row - 1, col + 1, W_ROOK);
+         ret.push_back(new_tmp);
+
+         setPiece(new_tmp, row - 1, col + 1, W_BISHOP);
+         ret.push_back(new_tmp);
+
+         setPiece(new_tmp, row - 1, col + 1, W_KNIGHT);
+         ret.push_back(new_tmp);
+      }
+   }
+   return ret;
+}
+
+extern vector<void *> generateBlackPawnMoves(const void *board, int row, int col)
+{
+   vector <void *> ret ;
+
+   board_type *tmp;
+   tmp = (board_type *)copyBoard(board);
+   setPiece((void *)tmp, row, col, EMPTY);
+   if (getPiece(tmp, row +1, col) == EMPTY)
+   {
+      if (row < 3)
+      {
+         board_type *new_tmp = (board_type *)copyBoard(tmp);
+         setPiece(new_tmp, row + 1, col, B_PAWN);
+         ret.push_back(new_tmp);
+      } else {
+         board_type *new_tmp = (board_type *)copyBoard(tmp);
+         setPiece(new_tmp, row + 1, col, B_ROOK);
+         ret.push_back(new_tmp);
+
+         setPiece(new_tmp, row + 1, col, B_BISHOP);
+         ret.push_back(new_tmp);
+
+         setPiece(new_tmp, row + 1, col, B_KNIGHT);
+         ret.push_back(new_tmp);
+      }
+   }
+   if ( col > 0 
+     && getPiece(tmp, row + 1, col - 1) != EMPTY
+     && getColor(getPiece(tmp, row+1,col-1)) == white 
+      )
+   {
+      if (row < 3)
+      {
+         board_type *new_tmp = (board_type *)copyBoard(tmp);
+         setPiece(new_tmp, row + 1, col - 1, B_PAWN);
+         ret.push_back(new_tmp);
+      } else {
+         board_type *new_tmp = (board_type *)copyBoard(tmp);
+         setPiece(new_tmp, row + 1, col - 1, B_ROOK);
+         ret.push_back(new_tmp);
+
+         setPiece(new_tmp, row + 1, col - 1, B_BISHOP);
+         ret.push_back(new_tmp);
+
+         setPiece(new_tmp, row + 1, col - 1, B_KNIGHT);
+         ret.push_back(new_tmp);
+      }
+   }
+   if ( col < 3
+     && getPiece(tmp, row + 1, col + 1) != EMPTY
+     && getColor(getPiece(tmp, row+1,col+1)) == white 
+      )
+   {
+      if (row < 3)
+      {
+         board_type *new_tmp = (board_type *)copyBoard(tmp);
+         setPiece(new_tmp, row + 1, col + 1, B_PAWN);
+         ret.push_back(new_tmp);
+      } else {
+         board_type *new_tmp = (board_type *)copyBoard(tmp);
+         setPiece(new_tmp, row + 1, col + 1, B_ROOK);
+         ret.push_back(new_tmp);
+
+         setPiece(new_tmp, row + 1, col + 1, B_BISHOP);
+         ret.push_back(new_tmp);
+
+         setPiece(new_tmp, row + 1, col + 1, B_KNIGHT);
+         ret.push_back(new_tmp);
+      }
    }
    return ret;
 }

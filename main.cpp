@@ -35,6 +35,10 @@ int main()
             case 'R':
                piece = W_ROOK;
                break;
+
+            case 'P':
+               piece = W_PAWN;
+               break;
          }
          col = (int)char_col - 'A';
          row = 4 - row;
@@ -61,6 +65,10 @@ int main()
 
             case 'R':
                piece = B_ROOK;
+               break;
+
+            case 'P':
+               piece = B_PAWN;
                break;
          }
          col = (int)char_col - 'A';

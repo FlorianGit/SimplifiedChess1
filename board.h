@@ -9,11 +9,13 @@
 #define W_QUEEN     1
 #define W_ROOK      2
 #define W_BISHOP    3
-#define W_KNIGHT    4LL
-#define B_QUEEN     5
-#define B_ROOK      6
-#define B_BISHOP    7
-#define B_KNIGHT    8LL
+#define W_KNIGHT    4
+#define W_PAWN      5
+#define B_QUEEN     6
+#define B_ROOK      7
+#define B_BISHOP    8
+#define B_KNIGHT    9
+#define B_PAWN     10
 
 #define WHITE_WINS  0
 #define BLACK_WINS  1
@@ -36,6 +38,8 @@ extern vector<void *> generateKnightMoves(const void *board, int row, int col);
 extern vector<void *> generateRookMoves(const void *board, int row, int col);
 extern vector <void *> generateBishopMoves(const void *board, int row, int col);
 extern vector <void *> generateQueenMoves(const void *board, int row, int col);
+extern vector<void *> generateWhitePawnMoves(const void *board, int row, int col);
+extern vector<void *> generateBlackPawnMoves(const void *board, int row, int col);
 
 extern int playerHasWon(void * board, color player);
 extern int recursiveSearchWhite(const void *board, int level);
